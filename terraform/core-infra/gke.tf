@@ -11,7 +11,7 @@ module "bcw_gke" {
   project_id                 = local.project_id
   name                       = local.base_name
   region                     = local.region
-  zones                      = local.zones
+  zones                      = slice(local.zones, 0, 2)
   network                    = module.bcw_vpc.network_name
   subnetwork                 = "${local.base_name}-subnet-01"
   ip_range_pods              = "${local.base_name}-subnet-01-secondary-01"
@@ -22,10 +22,9 @@ module "bcw_gke" {
   node_pools = [
     {
       name               = "default-node-pool"
-      machine_type       = "e2-micro"
+      machine_type       = "e2-medium"
       autoscaling        = false
       min_count          = 1
-      max_count          = 50
       disk_size_gb       = 50
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
