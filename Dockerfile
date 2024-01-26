@@ -1,3 +1,11 @@
 FROM node:alpine3.17
 
-#Finish remaining steos in order to successfully build Docker-image
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["node", "app.js"]
