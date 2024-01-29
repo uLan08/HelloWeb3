@@ -37,6 +37,11 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          env: 
+            {{- toYaml .Values.envs | nindent 12 }}
+          envFrom:
+          - secretRef:
+              name: bcw-secrets-manual
           livenessProbe:
             httpGet:
               path: /
