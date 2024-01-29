@@ -8,6 +8,7 @@ image:
   repository: ghcr.io/ulan08/helloweb3
   tag: "ci-7664848974"
 
+nameOverride: "bcw-test"
 fullnameOverride: "bcw-test"
 
 serviceAccount:
@@ -34,7 +35,7 @@ securityContext: {}
 
 envs:
   - name: PORT
-    value: 3000
+    value: "3000"
 
 service:
   type: ClusterIP
@@ -44,11 +45,12 @@ ingress:
   enabled: true
   # className: ""
   annotations:
-    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.class: gceg
   hosts:
     - host: bcw-test.local
       paths:
         - path: /
+          pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
