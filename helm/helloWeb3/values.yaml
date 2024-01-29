@@ -45,7 +45,7 @@ ingress:
   enabled: true
   # className: ""
   annotations:
-    kubernetes.io/ingress.class: gceg
+    kubernetes.io/ingress.class: gce
   hosts:
     - host: bcw-test.local
       paths:
