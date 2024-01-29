@@ -4,6 +4,7 @@ import http from "http";
 
 const register = new prom.Registry();
 const apiKey = process.env.API_KEY;
+const port = process.env.PORT;
 
 const urls = [
   {
@@ -54,8 +55,8 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8080, () => {
-  console.log("Server is running on http://localhost:8080");
+server.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
   updateMetrics();
-  console.log("Metrics are available on http://localhost:8080/metrics");
+  console.log(`Metrics are available on http://localhost:${port}/metrics`);
 });

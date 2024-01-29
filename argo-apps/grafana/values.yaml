@@ -1,0 +1,28 @@
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus-1706541079-server.monitoring.svc.cluster.local
+     isDefault: true
+
+
+ingress:
+
+  enabled: true
+
+  annotations: 
+    kubernetes.io/ingress.class: gce
+
+  hosts:
+    - bcw-test.grafana.local
+
+  path: /
+
+  pathType: Prefix
+
+  # tls:
+  #   - secretName: grafana-server-tls
+  #     hosts:
+  #       - bcw-test.grafana.local
